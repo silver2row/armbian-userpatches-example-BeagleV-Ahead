@@ -1,4 +1,4 @@
-# armbian-userpatches-example-indiedroid-nova
+# armbian-userpatches-example-beaglev-ahead
 reference implementation of having a unique device completely configured via userpatches.
 
 
@@ -14,8 +14,8 @@ this means 2 things.
 that might look like this
 
 ```bash
-sudo apt install docker.io -y
-sudo usermod -a -G docker ${USER}
+Use this link: https://docs.docker.com/engine/install/debian/
+sudo usermod -aG docker ${USER}
 logout
 ```
 
