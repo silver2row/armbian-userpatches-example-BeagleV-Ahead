@@ -24,7 +24,7 @@ logout
 ```bash
 git clone https://github.com/armbian/build.git
 cd build
-git submodule add -f -b main https://github.com/lanefu/armbian-userpatches-example-indiedroid-nova.git userpatches
+git submodule add -f -b main https://github.com/lanefu/armbian-userpatches-example-BeagleV-Ahead.git userpatches
 ```
 
 ### interactive build
@@ -32,7 +32,7 @@ git submodule add -f -b main https://github.com/lanefu/armbian-userpatches-examp
 will prompt for menus etc
 
 ```
-./compile.sh nova
+./compile.sh ARCH="riscv64" CROSS_COMPILE="SOME_TYPE_OF_CC" BOARD="beaglev_ahead"
 ```
 
 ### sid cli build
