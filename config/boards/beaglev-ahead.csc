@@ -30,7 +30,7 @@ function post_family_config__beaglev_ahead_u_boot() {
 
 function post_family_config_branch_beaglev_ahead_kernel() {
 	KERNELDIR='/kernel'
-	KERNELSOURCE='https://git.beagleboard.org/linux'
+	KERNELSOURCE='https://git.beagleboard.org/linux.git'
 	declare -g KERNEL_MAJOR_MINOR="5.10" # Major and minor versions of this kernel.
 	KERNELBRANCH='branch:armbian-9tripod-patchset'
 	KERNELPATCHDIR='c910-th1520'
