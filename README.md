@@ -24,7 +24,7 @@ logout
 ```bash
 git clone https://github.com/armbian/build.git
 cd build
-git submodule add -f -b main https://github.com/lanefu/armbian-userpatches-example-BeagleV-Ahead.git userpatches
+git submodule add -f -b main https://github.com/silver2row/armbian-userpatches-example-BeagleV-Ahead.git userpatches
 ```
 
 ### interactive build
@@ -32,7 +32,7 @@ git submodule add -f -b main https://github.com/lanefu/armbian-userpatches-examp
 will prompt for menus etc
 
 ```
-./compile.sh ARCH="riscv" CROSS_COMPILE="SOME_TYPE_OF_CC" BOARD="beaglev_ahead"
+./compile.sh ARCH="riscv64" CROSS_COMPILE="SOME_TYPE_OF_CC" BOARD="beaglev_ahead"
 ```
 
 ### sid cli build
