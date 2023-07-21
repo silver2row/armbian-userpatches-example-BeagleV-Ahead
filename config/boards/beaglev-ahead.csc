@@ -1,10 +1,10 @@
 # BeagleV-Ahead
 
-BOARD_NAME="BeagleV Ahead"
+BOARD_NAME="BeagleV-Ahead"
 BOARDFAMILY="c910-th1520"
 BOOTCONFIG="beaglev_ahead_defconfig" # vendor name, not standard, see hook below, set BOOT_SOC below to compensate
 BOOT_SOC="c910"
-KERNEL_TARGET="edge"
+KERNEL_TARGET="5.10"
 FULL_DESKTOP="yes"
 BOOT_LOGO="desktop"
 BOOT_FDT_FILE="light-beagle.dtb"
@@ -28,10 +28,10 @@ function post_family_config__beaglev_ahead_u_boot() {
 	BOOTPATCHDIR="legacy"
 }
 
-function post_family_config_branch_beaglev_ahead_kernel() {
+function post_family_config__branch_beaglev_ahead_kernel() {
 	KERNELDIR='/kernel'
 	KERNELSOURCE='https://git.beagleboard.org/linux.git'
-	declare -g KERNEL_MAJOR_MINOR="5.10" # Major and minor versions of this kernel.
+	declare -g KERNEL_MAJOR_MINOR="5.10"
 	KERNELBRANCH='branch:armbian-9tripod-patchset'
 	KERNELPATCHDIR='c910-th1520'
 	LINUXCONFIG='linux-c910-th1520'
