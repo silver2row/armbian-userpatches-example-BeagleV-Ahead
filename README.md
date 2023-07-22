@@ -1,3 +1,6 @@
+# To Future Self...this repo is broken for now...please fix it.
+the items in ` kernel ` and ` userpatches ` need new renditions...
+
 # armbian-userpatches-example-beaglev-ahead
 reference implementation of having a unique device completely configured via userpatches.
 
