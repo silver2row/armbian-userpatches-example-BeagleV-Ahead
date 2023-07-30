@@ -25,20 +25,20 @@ EXTRAWIFI="yes"
 KERNEL_DRIVERS_SKIP+="(driver_rtw88)"
 
 # Override family config for this board; let's avoid conditionals in family config.
-function post_family_config__beaglev_ahead_u_boot() {
-	BOOTSOURCE='https://github.com/silver2row/u-boot_for_armbian'
-	BOOTBRANCH='branch:master'
-	BOOTPATCHDIR="/../"
-}
+#function post_family_config__beaglev_ahead_u_boot() {
+#	BOOTSOURCE='https://github.com/silver2row/u-boot_for_armbian'
+#	BOOTBRANCH='branch:master'
+#	BOOTPATCHDIR="/../"
+#}
 
-function post_family_config__branch_beaglev_ahead_kernel() {
-	KERNELDIR='/kernel/'
-	KERNELSOURCE='https://github.com/silver2row/linux_for_armbian'
-	declare -g KERNEL_MAJOR_MINOR="6.5"
-	KERNELBRANCH='branch:master'
-	KERNELPATCHDIR='c910-th1520'
-	LINUXCONFIG='linux-c910-th1520'
-}
+#function post_family_config__branch_beaglev_ahead_kernel() {
+#	KERNELDIR='/kernel/'
+#	KERNELSOURCE='https://github.com/silver2row/linux_for_armbian'
+#	declare -g KERNEL_MAJOR_MINOR="6.5"
+#	KERNELBRANCH='branch:master'
+#	KERNELPATCHDIR='c910-th1520'
+#	LINUXCONFIG='linux-c910-th1520'
+#}
 
 #function post_family_config__beaglev_ahead_u_boot_booting() {
 #	BOOTSOURCE='https://github.com/silver2row/xuantie-ubuntu-armbian'
