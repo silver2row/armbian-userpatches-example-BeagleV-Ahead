@@ -35,20 +35,20 @@ git submodule add -f -b main https://github.com/silver2row/armbian-userpatches-e
 will prompt for menus etc
 
 ```
-./compile.sh ARCH="riscv64" CROSS_COMPILE="SOME_TYPE_OF_CC" BOARD="beaglev_ahead"
+./compile.sh
 ```
 
 ### sid cli build
 
-uses `config-nova-sid.conf` to build a cli based debian sid image
+uses `config-beaglev-ahead-sid.conf` to build a cli based debian sid image
 
-`./compile.sh nova-sid`
+`./compile.sh beaglev-ahead-sid`
 
 ### really bloated gnome build
 
-uses `config-nova-gnmoe-bloated.conf` to build a gnome desktop bloated by most application groups selected
+uses `config-beaglev-ahead-gnome-bloated.conf` to build a gnome desktop bloated by most application groups selected
 
-`./compile.sh nova-gnome-bloated`
+`./compile.sh beaglev-ahead-gnome-bloated`
 
 ### really really opinionated configuration
 
