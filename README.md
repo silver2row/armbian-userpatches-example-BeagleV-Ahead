@@ -1,3 +1,27 @@
+# Try Armbian with Docker if you want...
+
+`install docker`
+add your user account to the docker user group so that docker can be ran without sudo
+and that might look like this
+
+`Use this link:` https://docs.docker.com/engine/install/debian/
+
+`After the install process from that link...`
+
+sudo usermod -aG docker ${USER} && exit
+
+`usage`: Clone or Fork the repo!
+
+```
+git clone https://github.com/armbian/build.git
+cd build
+git submodule add -f -b main https://github.com/silver2row/armbian-userpatches-example-BeagleV-Ahead.git userpatches
+```
+
+`./compile.sh`
+
+The ./compile.sh script will bring upon new life in the build process within armbian...
+
 ```text
 ├── cache                                Work / cache directory
 │   ├── aptcache                         Packages
