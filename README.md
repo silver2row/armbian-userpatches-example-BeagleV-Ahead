@@ -1,78 +1,72 @@
-# To Future Self...this repo is broken for now...please fix it.
-the items in ` kernel ` and ` userpatches ` need new renditions...
-
-# armbian-userpatches-example-beaglev-ahead
-reference implementation of having a unique device completely configured via userpatches.
-
-
-## if you haven't used armbian before.
-
-it's best let armbian use docker on your behalf.
-
-this means 2 things.
-
-1. install docker
-1. add your user account to the `docker` user group so that docker can be ran without sudo
-
-that might look like this
-
-```bash
-Use this link: https://docs.docker.com/engine/install/debian/
-sudo usermod -aG docker ${USER}
-logout
+```text
+├── cache                                Work / cache directory
+│   ├── aptcache                         Packages
+│   ├── ccache                           C/C++ compiler
+│   ├── docker                           Docker last pull
+│   ├── git-bare                         Minimal Git
+│   ├── git-bundles                      Full Git
+│   ├── initrd                           Ram disk
+│   ├── memoize                          Git status
+│   ├── patch                            Kernel drivers patch
+│   ├── pip                              Python
+│   ├── rootfs                           Compressed userspaces
+│   ├── sources                          Kernel, u-boot and other sources
+│   ├── tools                            Additional tools like ORAS
+│   └── utility
+├── config                               Packages repository configurations
+│   ├── targets.conf                     Board build target configuration
+│   ├── boards                           Board configurations
+│   ├── bootenv                          Initial boot loaders environments per family
+│   ├── bootscripts                      Initial Boot loaders scripts per family
+│   ├── cli                              CLI packages configurations per distribution
+│   ├── desktop                          Desktop packages configurations per distribution
+│   ├── distributions                    Distributions settings
+│   ├── kernel                           Kernel build configurations per family
+│   ├── sources                          Kernel and u-boot sources locations and scripts
+│   ├── templates                        User configuration templates which populate userpatches
+│   └── torrents                         External compiler and rootfs cache torrents
+├── extensions                           Extend build system with specific functionality
+├── lib                                  Main build framework libraries
+│   ├── functions
+│   │   ├── artifacts
+│   │   ├── bsp
+│   │   ├── cli
+│   │   ├── compilation
+│   │   ├── configuration
+│   │   ├── general
+│   │   ├── host
+│   │   ├── image
+│   │   ├── logging
+│   │   ├── main
+│   │   └── rootfs
+│   └── tools
+├── output                               Build artifact
+│   └── deb                              Deb packages
+│   └── images                           Bootable images - RAW or compressed
+│   └── debug                            Patch and build logs
+│   └── config                           Kernel configuration export location
+│   └── patch                            Created patches location
+├── packages                             Support scripts, binary blobs, packages
+│   ├── blobs                            Wallpapers, various configs, closed source bootloaders
+│   ├── bsp-cli                          Automatically added to armbian-bsp-cli package
+│   ├── bsp-desktop                      Automatically added to armbian-bsp-desktopo package
+│   ├── bsp                              Scripts and configs overlay for rootfs
+│   └── extras-buildpkgs                 Optional compilation and packaging engine
+├── patch                                Collection of patches
+│   ├── atf                              ARM trusted firmware
+│   ├── kernel                           Linux kernel patches
+|   |   └── family-branch                Per kernel family and branch
+│   ├── misc                             Linux kernel packaging patches
+│   └── u-boot                           Universal boot loader patches
+|       ├── u-boot-board                 For specific board
+|       └── u-boot-family                For entire kernel family
+├── tools                                Tools for dealing with kernel patches and configs
+└── userpatches                          User: configuration patching area
+    ├── lib.config                       User: framework common config/override file
+    ├── config-default.conf              User: default user config file
+    ├── customize-image.sh               User: script will execute just before closing the image
+    ├── atf                              User: ARM trusted firmware
+    ├── kernel                           User: Linux kernel per kernel family
+    ├── misc                             User: various
+    └── u-boot                           User: universal boot loader patches
 ```
-
-## usage
-
-```bash
-git clone https://github.com/armbian/build.git
-cd build
-git submodule add -f -b main https://github.com/silver2row/armbian-userpatches-example-BeagleV-Ahead.git userpatches
-```
-
-### interactive build
-
-will prompt for menus etc
-
-```
-./compile.sh
-```
-
-### sid cli build
-
-uses `config-beaglev-ahead-sid.conf` to build a cli based debian sid image
-
-`./compile.sh beaglev-ahead-sid`
-
-### really bloated gnome build
-
-uses `config-beaglev-ahead-gnome-bloated.conf` to build a gnome desktop bloated by most application groups selected
-
-`./compile.sh beaglev-ahead-gnome-bloated`
-
-### really really opinionated configuration
-
-uses `config-opinionated.conf` to build a debian sid cli image with custom ssh keys, strip out the normal interactive setup.  ready to boot.. and names itself princess-sbc
-
-
-
-## learn more
-
-Read the armbian docs to better understand the power available in the armbian build framework
-
-
-### Understand Hookpoints
-
-Hookpoints allow you to make
-
-add functions prefixed with any of these [hook points](https://docs.armbian.com/Developer-Guide_Extensions-Hooks/) in your config file.
-
-you can use them to use [existing functions](https://github.com/armbian/build/tree/main/lib/functions) or [extensions](https://docs.armbian.com/Developer-Guide_Extensions/)
-
-### Understand Extensions
-
-Extensions are a pluggable way to add a rich library of functions to armbian build framework.   Once enabled via a `enable_extension` call, They are generally available for use anywhere.
-
-https://docs.armbian.com/Developer-Guide_Extensions/#what-is-an-extension      "Specifically, extension files should not contain any code outside of functions – they should do nothing when sourced."
-
-**NOTE** slight edge-case that hooks related to build dependencies may get executed durring the Docker bootstrapping for cache management purposes regardless of being enabled... those extensions aren't otherwise available unless enabled with `enable_extension`
